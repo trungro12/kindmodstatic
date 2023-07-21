@@ -1,0 +1,423 @@
+* {
+  font-family: "Rubik", Arial, Helvetica, sans-serif;
+  /* line-height: 1.5 !important; */
+}
+
+#primary,
+article.big-content {
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3 {
+  color: #000;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.button-red,
+.button-blue {
+  margin: 1rem;
+  background-color: #f12727;
+  color: #fff !important;
+  font-weight: bold;
+  line-height: 1rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 22px;
+  padding: 1rem;
+  border-radius: 1rem;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+.button-blue {
+  background-color: #2a27f1;
+}
+
+.button-blue span,
+.button-red span {
+  color: #fff !important;
+  display: inline !important;
+}
+
+.button-red.block,
+.button-blue.block {
+  display: block;
+  text-align: center;
+}
+
+.button-red.none,
+.button-blue.none {
+  display: none;
+}
+
+.button-red:hover,
+.button-blue:hover {
+  color: #fff;
+  box-shadow: 3px 3px 9px 1px #ff00006b;
+  transition: 0.5s;
+}
+
+.button-blue:hover {
+  color: #fff;
+  box-shadow: 3px 3px 9px 1px #0011ff6b;
+  transition: 0.5s;
+}
+
+.big-content {
+  margin: 1rem 0;
+}
+
+.big-content a {
+  color: #f12727;
+}
+
+.headerTitle {
+  text-transform: uppercase;
+  color: #000 !important;
+  font-weight: bold;
+  font-size: 25px;
+  margin: 20px 0;
+}
+
+.big-content .item {
+  position: relative;
+  box-shadow: 0 0.25rem 1.5rem 1px rgba(0, 0, 0, 0.07);
+  background-color: #fff;
+  border-radius: 0.125rem;
+  padding: 1.25rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.big-content .item .name a span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.big-content .item:hover {
+  position: relative;
+  box-shadow: 0 0.25rem 1.5rem 1px rgba(0, 0, 0, 0.11);
+  transition: 0.3s;
+}
+
+.big-content .thumbnail {
+  float: none;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.big-content .cat-links,
+.big-content .cat-links span {
+  display: inline;
+}
+
+.big-content .cat-links a {
+  padding: 0 0.2rem;
+  font-weight: bold;
+}
+
+.big-content .cat-links a,
+.big-content .cat-links a span {
+  font-size: 17px;
+}
+
+.big-content .cat-links a:last-child {
+  margin-right: 15px;
+}
+
+.big-content .thumbnail img {
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.thumb-block {
+  position: relative;
+  width: auto;
+  max-width: 198px;
+  margin: auto;
+}
+
+.big-content .thumbnail.mod::before,
+.big-content .thumbnail.obb::before {
+  content: "MOD";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: #f12727;
+  box-shadow: 3px 3px 9px 1px #ff00006b;
+  color: #fff;
+  border-radius: 0 0 0.75rem 0.75rem;
+  font-weight: 700;
+  line-height: 1rem;
+  padding: 0.35rem 0.5rem;
+  margin-left: auto;
+  font-size: 1.25rem;
+  width: 100%;
+  text-align: center;
+}
+
+.big-content .thumbnail.obb::before {
+  content: "DATA";
+  background-color: #2a27f1;
+  box-shadow: 3px 3px 9px 1px #0026ff6b;
+}
+
+.mod.obb::before {
+  content: "MOD + DATA" !important;
+  background-color: #f12727 !important;
+  box-shadow: 3px 3px 9px 1px #ff00006b !important;
+}
+
+.big-content a span,
+.big-content a h3 {
+  color: #000;
+  font-weight: bold;
+  white-space: normal;
+  font-size: 21px;
+  line-height: 1.4rem;
+  /* max-height: 2.8rem; */
+  display: block;
+  overflow: hidden;
+  line-height: 1.4em;
+  height: 2.8em;
+}
+
+.big-content .entry-meta a span {
+  color: inherit;
+}
+
+.big-content .item a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.muted {
+  color: #b2b2b2 !important;
+}
+
+.star-color {
+  color: #a318ffcb !important;
+}
+
+.big-content .developer {
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
+article.big-content .developer {
+  overflow: unset;
+}
+
+.big-content .item .content {
+  overflow: hidden;
+}
+
+.big-content .item .developer {
+  margin-top: 10px;
+}
+
+.big-content .meta {
+  margin-top: 1rem;
+  /* height: 1.25rem; */
+  /* display: flex; */
+  align-items: center;
+}
+
+.big-content .entry-meta.meta {
+  line-height: 2;
+}
+
+.meta-item {
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.big-content .meta::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+.big-content .star-rating {
+  margin-top: 0;
+  position: relative;
+  display: inline-block;
+}
+
+.big-content .meta .rating {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.big-content .meta .rating li {
+  display: inline;
+}
+
+.rate-info {
+  display: inline-block;
+  font-size: 13px;
+  margin-left: 5px;
+}
+
+h1.entry-title {
+  font-size: 2.7rem !important;
+  font-weight: bold;
+}
+
+.info-app {
+  padding: 0;
+  display: block;
+  text-align: left;
+}
+
+.desc-full,
+.info-app,
+.meta {
+  font-size: 17px;
+}
+
+.info-app span {
+  padding: 10px;
+  display: inline-block;
+}
+
+.screenshots,
+.video {
+  text-align: center;
+}
+
+.screenshots img {
+  display: block;
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
+.ast-pagination .page-numbers {
+  padding: 0;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.fa-brands,
+.fa-solid {
+  margin-right: 5px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table {
+  margin: 1.25rem 0;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.searchform {
+  text-align: center;
+  display: block;
+  width: 100%;
+  /* background-repeat: no-repeat; */
+  background-position: 50% 35%;
+  background-size: auto 100%;
+  background-color: #000000;
+  color: #fff;
+  overflow: hidden;
+  padding: 3rem 1rem;
+  box-shadow: inset 0 0 3rem 0.3rem #000000;
+}
+
+@supports not (background-image: url("https://kindmod.com/wp-content/themes/kindmod/images/header-bg.webp")) {
+  .searchform {
+    background-image: url("https://kindmod.com/wp-content/themes/kindmod/images/header-bg.jpg");
+  }
+}
+
+@supports (background-image: url("https://kindmod.com/wp-content/themes/kindmod/images/header-bg.webp")) {
+  .searchform {
+    background-image: url("https://kindmod.com/wp-content/themes/kindmod/images/header-bg.webp");
+  }
+}
+
+.searchform input[type="search"] {
+  padding: 1.2rem;
+  border-radius: 1rem 0 0 1rem;
+  border: 1px solid #2a27f1;
+  width: 100%;
+}
+
+.searchform form {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.searchform button {
+  margin-left: -1rem;
+  margin-right: 0;
+  border-radius: 0 1rem 1rem 0;
+  border: 1px solid #2a27f1;
+  padding: 0.87rem;
+}
+
+@media screen and (max-width: 767px) {
+  .download-content {
+    text-align: center;
+    display: block !important;
+    padding: 5px;
+  }
+
+  .searchform input[type="search"] {
+    width: 100%;
+  }
+
+  h1.entry-title {
+    font-size: 25px !important;
+    margin-top: 1rem !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .searchform input[type="search"] {
+    min-width: 500px;
+  }
+}

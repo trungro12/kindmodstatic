@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>File Managers &#8211; KindMod</title>
+	<atom:link href="https://kindmod.com/apps/file-managers/feed/" rel="self" type="application/rss+xml" />
+	<link>https://kindmod.com/</link>
+	<description>Android Games MOD APK Free Download</description>
+	<lastBuildDate>Wed, 23 Nov 2022 03:54:04 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.2.2</generator>
+
+<image>
+	<url>https://kindmod.com/wp-content/uploads/2022/11/kindmod-favicon.png</url>
+	<title>File Managers &#8211; KindMod</title>
+	<link>https://kindmod.com/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>ZArchiver</title>
+		<link>https://kindmod.com/zarchiver-mod/</link>
+		
+		<dc:creator><![CDATA[Admin]]></dc:creator>
+		<pubDate>Wed, 23 Nov 2022 03:54:04 +0000</pubDate>
+				<category><![CDATA[Apps]]></category>
+		<category><![CDATA[File Managers]]></category>
+		<guid isPermaLink="false">https://kindmod.com/zarchiver-mod/</guid>
+
+					<description><![CDATA[ZArchiver &#8211; a program that is designed to work with all types of archives, it is a kind of archive manager that will allow you to create and extract any kind of archives, view the contents of folders or images attached to them, as well as extract multivolume or encrypted archives. A rather interesting ability &#8230;<p class="read-more"> <a class="" href="https://kindmod.com/zarchiver-mod/"> <span class="screen-reader-text">ZArchiver</span> Read More &#187;</a></p>]]></description>
+		
+		
+		
+			</item>
+	</channel>
+</rss>
