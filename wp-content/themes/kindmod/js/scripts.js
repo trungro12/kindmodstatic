@@ -28,6 +28,21 @@ $(function () {
   eventList.forEach(function (event) {
     window.addEventListener(event, triggerScripts, { passive: true });
   });
+
+  // add error image change
+
+
+  document.querySelectorAll("img").forEach(function (scriptTag) {
+    scriptTag.setAttribute("onerror", "reloadNewImage(this)");
+  });
+
+  function reloadNewImage(img) {
+    img.onerror = null;
+    let src = img.src.replace(".webp", "");
+    img.src = src;
+  }
+
+
 });
 
 function triggerScripts() {
@@ -43,3 +58,4 @@ function runScripts() {
     scriptTag.setAttribute("src", scriptTag.getAttribute("data-src"));
   });
 }
+
