@@ -24,6 +24,13 @@ const eventList = [
 
 // const autoLoadTimeout = setTimeout(runScripts, autoLoadDuration * 1000);
 
+
+function reloadNewImage(img) {
+  img.onerror = null;
+  let src = img.src.replace(".webp", "");
+  img.src = src;
+}
+
 $(function () {
   eventList.forEach(function (event) {
     window.addEventListener(event, triggerScripts, { passive: true });
@@ -35,13 +42,6 @@ $(function () {
   document.querySelectorAll("img").forEach(function (scriptTag) {
     scriptTag.setAttribute("onerror", "reloadNewImage(this)");
   });
-
-  function reloadNewImage(img) {
-    img.onerror = null;
-    let src = img.src.replace(".webp", "");
-    img.src = src;
-  }
-
 
 });
 
