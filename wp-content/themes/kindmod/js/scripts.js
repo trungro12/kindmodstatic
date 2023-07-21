@@ -24,25 +24,10 @@ const eventList = [
 
 // const autoLoadTimeout = setTimeout(runScripts, autoLoadDuration * 1000);
 
-
-function reloadNewImage(img) {
-  // img.onerror = null;
-  let src = img.src.replace(".webp", "");
-  img.src = src;
-}
-
 $(function () {
   eventList.forEach(function (event) {
     window.addEventListener(event, triggerScripts, { passive: true });
   });
-
-  // add error image change
-
-
-  document.querySelectorAll("img").forEach(function (scriptTag) {
-    reloadNewImage(scriptTag);
-  });
-
 });
 
 function triggerScripts() {
@@ -57,5 +42,11 @@ function runScripts() {
   document.querySelectorAll("script[lazy]").forEach(function (scriptTag) {
     scriptTag.setAttribute("src", scriptTag.getAttribute("data-src"));
   });
-}
 
+
+  document.querySelectorAll("img[data-src-webp]").forEach(function (scriptTag) {
+    let src = scriptTag.getAttribute("src").replace(".webp", "");
+    scriptTag.setAttribute("src", src);
+  });
+
+}
