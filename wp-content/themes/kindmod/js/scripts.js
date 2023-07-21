@@ -42,11 +42,4 @@ function runScripts() {
   document.querySelectorAll("script[lazy]").forEach(function (scriptTag) {
     scriptTag.setAttribute("src", scriptTag.getAttribute("data-src"));
   });
-
-
-  document.querySelectorAll("img[data-src-webp]").forEach(function (scriptTag) {
-    let src = scriptTag.getAttribute("src").replace(".webp", "");
-    scriptTag.setAttribute("src", src);
-  });
-
 }
