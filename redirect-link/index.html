@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 
 <head>
   <title>
@@ -405,23 +405,17 @@
     }
   </style>
   <script src='https://code.jquery.com/jquery-3.7.0.min.js'></script>
+  <script src='./config.js?v=2'></script>
 </head>
 
 <body>
-
-  <script>
-    const homeUrl = 'https://kindmod.com/redirect-link';
-  </script>
-
   <div id='taolinkchuyenhuong'>
     <div class='taolinkchuyenhuong'>
       <form name='taolinkrutgon'>
         <input id='link' name='link' placeholder='Vui lòng nhập link bao gồm HTTP/S' required='required' type='url' />
-        <center>
-          <button class='taolink ripple' type='submit'>
-            Tạo link chuyển hướng
-          </button>
-        </center>
+        <button class='taolink ripple' type='submit'>
+          Tạo link chuyển hướng
+        </button>
       </form>
       <div id='taoxong'>
       </div>
@@ -738,7 +732,7 @@
       background-color: #fafafa
     }
 
-    #link {
+    #link, .link-result {
       font-family: inherit;
       width: 100%;
       text-align: center;
@@ -772,73 +766,12 @@
       box-shadow: 0 0 2px rgba(66, 133, 244, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
       font-family: 'Roboto', sans-serif;
       text-decoration: none !important;
-      border: none
+      border: none;
+      display: block;
+      margin: auto;
+      cursor: pointer;
     }
   </style>
-  <script>
-
-    var isTab = true;
-
-    document.addEventListener("visibilitychange", (event) => {
-      if (document.visibilityState == "visible") {
-        isTab = true;
-      } else {
-        isTab = false;
-      }
-    });
-
-    //<![CDATA[
-    function getQueryVariable(t) {
-      for (var n = window.location.search.substring(1).split("&"), e = 0; e < n.length; e++) {
-        var i = n[e].split("=");
-        if (i[0] == t) return i[1]
-      }
-      return !1
-    }
-    var page = getQueryVariable("url") || null;
-    if (page) {
-      const api = '37fbb8008200612b7c5c0dfcde5113722e046632';
-      page = `https://link1s.com/full?api=${api}&url=${page}&type=1`;
-    }
-
-    function countDown() {
-      time--, gett("timecount").innerHTML = time, 0 == time && isTab && (window.location = page)
-    }
-
-    function gett(t) {
-      return document.getElementById ? document.getElementById(t) : document.all ? document.all.id : document.layers ? document.layers.id : window.opera ? window.opera.id : void 0
-    }
-
-    function init() {
-      gett("timecount") || setTimeout(init, 50)
-    }
-    document.onload = init(), $(document).ready(function () {
-      $(".link-out-btn").attr('href', page);
-      // $("#linkout").text(page)
-    });
-
-
-      //]]></script>
-  <script>
-    function closeWindow() {
-      window.open('', '_parent', '');
-      window.close();
-    }
-  </script>
-  <script>
-    //<![CDATA[
-    function getQueryVariable(variable) {
-      var query = window.location.search.substring(1); var vars = query.split("&"); for (var i = 0; vars.length > i; i++) { var pair = vars[i].split("="); if (pair[0] == variable) { return pair[1] } }
-      return (!1)
-    }
-    var time = 5; function countDown() { if (!isTab) return; if (!gett("timecount")) { clearInterval(this); return; } time--; gett("timecount").innerHTML = time }
-    function gett(id) { if (document.getElementById) return document.getElementById(id); if (document.all) return document.all.id; if (document.layers) return document.layers.id; if (window.opera) return window.opera.id }
-    function init() {
-      if (gett('timecount')) { setInterval(countDown, 1000); gett("timecount").innerHTML = time }
-      else { setTimeout(init, 50) }
-    }
-    document.onload = init(); setTimeout(function () { document.getElementById("nametime").innerHTML = "0<br/>"; document.getElementById("waitlink").style.display = "none"; $(".link-out-btn").css('display', 'block') }, 5000)
-      //]]></script>
 
   <!-- Ads-Pic -->
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2242202070298795" data-ad-slot="1551808879"
@@ -968,10 +901,6 @@
       </div>
     </span>
   </div>
-  <script>
-    //<![CDATA[
-    $("form[name=taolinkrutgon]").on("submit", function (n) { n.preventDefault(), _link = $("input[name=link]", $(this)).val(), $("#taoxong").empty().append($("<input>", { value: homeUrl + "?url=" + btoa(encodeURIComponent(_link)) })) });
-      //]]></script>
 </body>
 
 </html>
