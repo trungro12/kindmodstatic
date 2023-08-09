@@ -28,8 +28,8 @@ $(window).blur(function () {
 });
 
 var page = getQueryVariable("url") || btoa(encodeURIComponent(homeUrl));
-const api = "37fbb8008200612b7c5c0dfcde5113722e046632";
-const link = `https://link1s.com/full?api=${api}&url=${page}&type=1`;
+const link = `http://ouo.io/qs/mb0s4Eb3?s=${atob(page)}`;
+
 
 function gett(id) {
   if (document.getElementById) return document.getElementById(id);
