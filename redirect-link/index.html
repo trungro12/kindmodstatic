@@ -626,7 +626,8 @@
     }
 
     .link-out-btn {
-      cursor: pointer
+      cursor: pointer;
+      display: none;
     }
 
     #taolinkchuyenhuong {
@@ -811,7 +812,7 @@
       if (gett('timecount')) { setInterval(countDown, 1000); gett("timecount").innerHTML = time }
       else { setTimeout(init, 50) }
     }
-    document.onload = init(); setTimeout(function () { document.getElementById("nametime").innerHTML = "0<br/>"; document.getElementById("waitlink").style.display = "none"; document.getElementById("bodylink").style.display = "block" }, 5000)
+    document.onload = init(); setTimeout(function () { document.getElementById("nametime").innerHTML = "0<br/>"; document.getElementById("waitlink").style.display = "none"; $(".link-out-btn").css('display', 'block') }, 5000)
       //]]></script>
 
   <!-- Ads-Pic -->
@@ -831,7 +832,7 @@
       </div>
     </div>
     <div class='istc is1' id='waitlink'><a disabled='disabled' href='#'>Vui lòng chờ... </a></div>
-    <div class='istc is2' id='bodylink'><a class='link-out-btn ripple' rel='nofollow noopener noreferrer'>Đi đến
+    <div class='istc is2' id='link1'><a class='link-out-btn ripple' rel='nofollow noopener noreferrer'>Đi đến
         link</a></div>
   </div>
 
