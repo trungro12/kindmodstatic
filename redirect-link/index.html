@@ -82,7 +82,7 @@
     return !1
 }
 var page = getQueryVariable("url") || null;
-if(page) page = decodeURIComponent(atob(page));
+if(page) page = 'https://link1s.com/st?api=37fbb8008200612b7c5c0dfcde5113722e046632&url=' + decodeURIComponent(atob(page));
 
 function countDown() {
     time--, gett("timecount").innerHTML = time, 0 == time && (window.location = page)
