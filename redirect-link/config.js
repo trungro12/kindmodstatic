@@ -1,5 +1,5 @@
 const homeUrl = "https://kindmod.com/redirect-link";
-var time = 5;
+var time = 1;
 
 function getQueryVariable(variable) {
   var query = window.location.search.substring(1);
@@ -11,6 +11,15 @@ function getQueryVariable(variable) {
     }
   }
   return !1;
+}
+
+const openInNewTab = (url, target = '_blank') => {
+  const a = document.createElement('a');
+  a.rel = 'nofollow noopener noreferrer';
+  a.href = url;
+  a.target = target;
+  a.click();
+  a.remove();
 }
 
 function copy(text) {
@@ -55,12 +64,27 @@ function init() {
     gett("timecount").innerHTML = time;
   } else setTimeout(init, 50);
 }
-document.onload = init();
+
+$(() => {
+  gett("timecount").innerHTML = '0';
+
+  const getLinkBtn = $("#getLink");
+
+  getLinkBtn.click(() => {
+    openInNewTab('https://shope.ee/8zc4oXqyep');
+    getLinkBtn.remove();
+    $('#waitlink').show();
+    init();
+  });
+});
+
+// document.onload = init();
+
 
 function showLink() {
   document.getElementById("nametime").innerHTML = "0<br/>";
   document.getElementById("waitlink").style.display = "none";
-  $("a.link-out-btn").css("display", "block");
+  $("a.link-out-btn").css("display", "inline-block");
   $("a.link-out-btn").each((i, e) => (e.href = link));
 }
 
