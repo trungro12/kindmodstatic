@@ -15,7 +15,7 @@ function getQueryVariable(variable) {
 
 function copy(text) {
   navigator.clipboard.writeText(text);
-  alert('Đã Copy!');
+  alert("Đã Copy!");
 }
 
 var isTab = true;
@@ -28,8 +28,9 @@ $(window).blur(function () {
 });
 
 var page = getQueryVariable("url") || btoa(encodeURIComponent(homeUrl));
-const link = `http://ouo.io/qs/mb0s4Eb3?s=${atob(page)}`;
+// const link = `http://ouo.io/qs/mb0s4Eb3?s=${atob(page)}`;
 
+const link = `https://link1s.com/st?api=37fbb8008200612b7c5c0dfcde5113722e046632&url=${page}&type=1`;
 
 function gett(id) {
   if (document.getElementById) return document.getElementById(id);
@@ -73,8 +74,6 @@ $(function () {
       readonly: true,
     });
     const btnCopy = `<button onclick="copy('${linkFinal}')" class="taolink ripple" type="button">Copy</button>`;
-    $("#taoxong")
-      .empty()
-      .append(inputMake).append(btnCopy);
+    $("#taoxong").empty().append(inputMake).append(btnCopy);
   });
 });
