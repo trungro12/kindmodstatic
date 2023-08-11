@@ -1,5 +1,5 @@
 const homeUrl = "https://kindmod.com/redirect-link";
-var time = 1;
+var time = 5;
 
 function getQueryVariable(variable) {
   var query = window.location.search.substring(1);
@@ -71,7 +71,7 @@ $(() => {
   const getLinkBtn = $("#getLink");
 
   getLinkBtn.click(() => {
-    openInNewTab("https://shope.ee/8zc4oXqyep");
+    // openInNewTab("https://shope.ee/8zc4oXqyep");
     getLinkBtn.remove();
     $("#waitlink").show();
     init();
@@ -122,3 +122,37 @@ $(function () {
 //     }
 //   }
 // });
+
+// Shopee Flashsale
+
+$(async function () {
+  const url =
+    "aHR0cHMlM0ElMkYlMkY3ZGlzLnRydW5ncGhhbTQyLnJlcGwuY28lMkZzaG9wZWUtZmxhc2hzYWxlcw==";
+  $.ajax({
+    url: decodeURIComponent(atob(url)),
+    error: function (err) {
+      console.log(err);
+    },
+    success: function (data) {
+      console.log(data);
+      let html = "";
+      for (const voucher of data) {
+        html += `
+          <div class="box-voucher">
+          <a href="${voucher.link}" target="_blank" rel="nofollow noreferrer noopener">
+            <div class="shopeeImage"><img src="${voucher.image}" alt="${voucher.title}"></div>
+            <div class="shopeeTitle">${voucher.title}</div>
+            <div class="shopeeContent">${voucher.content}</div>
+            <div class="shopeeTime">${voucher.startTime} - ${voucher.endTime}</div>
+          </a>
+        </div>
+          `;
+      }
+
+      $("#shopeeVoucherContent").empty().append(html);
+      $('#shopeeShow').show();
+    },
+    
+    timeout: 4000, // sets timeout to 3 seconds
+  });
+});
