@@ -134,7 +134,6 @@ $(async function () {
       console.log(err);
     },
     success: function (data) {
-      console.log(data);
       let html = "";
       for (const voucher of data) {
         html += `
