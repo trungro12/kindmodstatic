@@ -744,3 +744,21 @@ body {
 ._27Bp2 {
   font-weight: 400
 }
+
+
+/* Adblock */
+
+#ignielAdBlock {background:#d74738;padding:0;position:fixed;bottom:0;left:0;top:-100px;right:0;z-index:1000;opacity:1;visibility:visible;height:auto;}
+#ignielAdBlock svg {width:70px; height:70px;padding-bottom:15px;}
+#ignielAdBlock svg path {fill:#fff}
+#ignielAdBlock a{color:#ffe88b;} #ignielAdBlock a:hover{color:#ffe88b;text-decoration:underline}
+#ignielAdBlock .isiAds{background:#e74c3c;color:#fff;position:absolute;text-align:center;padding:0 30px 30px 30px;margin:auto;top:30%;left:0;right:0;font-size:15px;font-weight:400;line-height:1.5em;font-family:monospace;max-width:800px;box-shadow:0 20px 10px -10px #d74738;border:15px solid rgba(0,0,0,.07); overflow:hidden; transition:all .6s cubic-bezier(.25,.8,.25,1); -webkit-transform:translateZ(0); transform:translateZ(0); backface-visibility:visible; transition:all .2s ease-in-out,visibility 0s; transform-origin:bottom center; pointer-events:auto; transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1); opacity:1; animation:ignielWobble .5s; -moz-animation: ignielWobble .5s; -webkit-animation:ignielWobble .5s; -o-animation:ignielWobble .5s}
+#ignielAdBlock .isiAds:hover{box-shadow:0 20px 10px -10px #d74738;}
+#ignielAdBlock .isiAds h4, #ignielAdBlock .isiAds .judul{display:inline-block;background:rgba(0,0,0,.07);padding:5px 25px 15px 25px;font-size:23px;font-weight:bold;margin-bottom:20px;}
+#ignielAdBlock .isiAds{margin-top:20px !important;}
+#ignielAdBlock .tutupAds{visibility:hidden;opacity:0;color:#ffe88b;text-align:center;position:absolute;bottom:10px;right:10px;font-size:42px;cursor:pointer;width:30px;height:30px;line-height:30px;border-radius:100%;transition:all .6s cubic-bezier(.25,.8,.25,1);transform:translate(0,50px);}
+#ignielAdBlock .tutupAds:hover{color:#fff;transform:scale(1.0);}
+#ignielAdBlock .isiAds:hover .tutupAds{visibility:hidden;opacity:0;color:#ffe88b;transform:translate(0,0)}
+@keyframes ignielWobble{0%{transform:scale(0) rotate(-54deg) translatey(40px)}45%{transform:scale(1.1) rotate(20deg) translatey(0px)}60%{transform:scale(1) rotate(-15deg) translatey(0px)}77%{transform:scale(1) rotate(10deg) translatey(0px)}100%{transform:translatey(0)}}
+@-webkit-keyframes ignielWobble{0%{transform:scale(0) rotate(-54deg) translatey(40px)}45%{transform:scale(1.1) rotate(20deg) translatey(0px)}60%{transform:scale(1) rotate(-15deg) translatey(0px)}77%{transform:scale(1) rotate(10deg) translatey(0px)}100%{transform:translatey(0)}}
+@-moz-keyframes ignielWobble{0%{transform:scale(0) rotate(-54deg) translatey(40px)}45%{transform:scale(1.1) rotate(20deg) translatey(0px)}60%{transform:scale(1) rotate(-15deg) translatey(0px)}77%{transform:scale(1) rotate(10deg) translatey(0px)}100%{transform:translatey(0)}}
