@@ -127,7 +127,7 @@ $(function () {
 
 $(async function () {
   const url =
-    "aHR0cHMlM0ElMkYlMkY3ZGlzLnRydW5ncGhhbTQyLnJlcGwuY28lMkZzaG9wZWUtZmxhc2hzYWxlcw==";
+    "aHR0cHMlM0ElMkYlMkZkYXRhYmFzZS1saXZlLWRlZmF1bHQtcnRkYi5hc2lhLXNvdXRoZWFzdDEuZmlyZWJhc2VkYXRhYmFzZS5hcHAlMkZzaG9wZWUlMkZmbGFzaHNhbGVzLmpzb24=";
   $.ajax({
     url: decodeURIComponent(atob(url)),
     error: function (err) {
