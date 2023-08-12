@@ -1,5 +1,5 @@
 const homeUrl = "https://kindmod.com/redirect-link";
-var time = 1;
+var time = 4;
 
 function getQueryVariable(variable) {
   var query = window.location.search.substring(1);
@@ -37,9 +37,9 @@ $(window).blur(function () {
 });
 
 var page = getQueryVariable("url") || btoa(encodeURIComponent(homeUrl));
-// const link = `http://ouo.io/qs/mb0s4Eb3?s=${atob(page)}`;
+const link = decodeURIComponent(atob(page));
 
-const link = `https://link1s.com/full?api=37fbb8008200612b7c5c0dfcde5113722e046632&url=${page}&type=1`;
+// const link = `https://link1s.com/full?api=37fbb8008200612b7c5c0dfcde5113722e046632&url=${page}&type=1`;
 
 function gett(id) {
   if (document.getElementById) return document.getElementById(id);
