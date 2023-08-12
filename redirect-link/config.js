@@ -1,5 +1,5 @@
 const homeUrl = "https://kindmod.com/redirect-link";
-var time = 5;
+var time = 2;
 
 function getQueryVariable(variable) {
   var query = window.location.search.substring(1);
