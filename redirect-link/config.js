@@ -1,5 +1,5 @@
 const homeUrl = "https://kindmod.com/redirect-link";
-var time = 2;
+var time = 1;
 
 function getQueryVariable(variable) {
   var query = window.location.search.substring(1);
@@ -71,7 +71,7 @@ $(() => {
   const getLinkBtn = $("#getLink");
 
   getLinkBtn.click(() => {
-    // openInNewTab("https://shope.ee/8zc4oXqyep");
+    openInNewTab("https://shope.ee/8zc4oXqyep");
     getLinkBtn.remove();
     $("#waitlink").show();
     init();
