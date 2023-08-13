@@ -28,13 +28,13 @@ function copy(text) {
 }
 
 var isTab = true;
-$(window).focus(function () {
-  isTab = true;
-});
+// $(window).focus(function () {
+//   isTab = true;
+// });
 
-$(window).blur(function () {
-  isTab = false;
-});
+// $(window).blur(function () {
+//   isTab = false;
+// });
 
 var page = getQueryVariable("url") || btoa(encodeURIComponent(homeUrl));
 const link = decodeURIComponent(atob(page));
