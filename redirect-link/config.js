@@ -69,8 +69,9 @@ $(() => {
   gett("timecount").innerHTML = "0";
 
   const getLinkBtn = $("#getLink");
-  getLinkBtn.attr('href', 'https://shope.ee/8zc4oXqyep');
-  getLinkBtn.attr('target', '_blank');
+  getLinkBtn.attr("href", "https://shope.ee/8zc4oXqyep");
+  getLinkBtn.attr("target", "_blank");
+  getLinkBtn.attr("ref", "nofollow noopener noreferrer");
   getLinkBtn.show();
 
   getLinkBtn.click(() => {
@@ -152,9 +153,9 @@ $(async function () {
       }
 
       $("#shopeeVoucherContent").empty().append(html);
-      $('#shopeeShow').show();
+      $("#shopeeShow").show();
     },
-    
+
     timeout: 4000, // sets timeout to 3 seconds
   });
 });
