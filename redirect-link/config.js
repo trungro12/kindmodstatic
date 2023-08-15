@@ -65,10 +65,19 @@ function init() {
   } else setTimeout(init, 50);
 }
 
-function showPopAds() {
-  $("body").append(
-    `<script src="./popads.js" type="text/javascript" data-cfasync="false"></script>`
-  );
+function showAds() {
+  // $("body").append(
+  //   `<script src="./popads.js" type="text/javascript" data-cfasync="false"></script>`
+  // );
+
+  $("head")
+    .append(`<script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2242202070298795"
+  crossorigin="anonymous"></script>`);
+  $(".adsense")
+    .append(`<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2242202070298795" data-ad-slot="1551808879"
+  data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>`);
+
 }
 $(() => {
   const arrHostShowAds = ["www.skidrowreloaded.com"];
@@ -80,7 +89,7 @@ $(() => {
   if (arrHostShowAds.includes(hostname)) {
     getLinkBtn.attr("href", "javascript:void(0)");
     checkAdblock();
-    showPopAds();
+    showAds();
   } else {
     getLinkBtn.attr("href", "https://shope.ee/8zc4oXqyep");
     getLinkBtn.attr("target", "_blank");
