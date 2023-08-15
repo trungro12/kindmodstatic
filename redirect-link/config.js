@@ -65,17 +65,33 @@ function init() {
   } else setTimeout(init, 50);
 }
 
+function showPopAds() {
+  $("body").append(
+    `<script src="./popads.js" type="text/javascript" data-cfasync="false"></script>`
+  );
+}
 $(() => {
+  const arrHostShowAds = ["www.skidrowreloaded.com"];
   gett("timecount").innerHTML = "0";
 
   const getLinkBtn = $("#getLink");
-  getLinkBtn.attr("href", "https://shope.ee/8zc4oXqyep");
-  getLinkBtn.attr("target", "_blank");
+
+  const { hostname } = new URL(link);
+  if (arrHostShowAds.includes(hostname)) {
+    getLinkBtn.attr("href", "javascript:void(0)");
+    showPopAds();
+  } else {
+    getLinkBtn.attr("href", "https://shope.ee/8zc4oXqyep");
+    getLinkBtn.attr("target", "_blank");
+  }
   getLinkBtn.attr("ref", "nofollow noopener noreferrer");
   getLinkBtn.show();
 
   // add fb like
-  $('#fb-like').attr('src', 'https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fkindmod.com&width=450&layout&action&size&share=false&height=35');
+  // $("#fb-like").attr(
+  //   "src",
+  //   "https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fkindmod.com&width=450&layout&action&size&share=false&height=35"
+  // );
 
   getLinkBtn.click(() => {
     // openInNewTab("https://shope.ee/8zc4oXqyep");
@@ -107,28 +123,6 @@ $(function () {
     $("#taoxong").empty().append(inputMake).append(btnCopy);
   });
 });
-
-// adblock
-// $(async function () {
-//   const htmlAdblock =
-//     '<div id="ignielAdBlock"><div class="isiAds"><span class="judul">Adblock Detected</span><br><svg viewBox="0 0 24 24"><path d="M13,13H11V7H13M12,17.3A1.3,1.3 0 0,1 10.7,16A1.3,1.3 0 0,1 12,14.7A1.3,1.3 0 0,1 13.3,16A1.3,1.3 0 0,1 12,17.3M15.73,3H8.27L3,8.27V15.73L8.27,21H15.73L21,15.73V8.27L15.73,3Z"></path></svg><br>Please turn off your adblock to continue, after you turn it off then reload this page. <br><br><br>Vui lòng tắt chặn quảng cáo và tải lại trang!</div></div>';
-//   let adBlockEnabled = false;
-//   const googleAdUrl =
-//     "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
-//   try {
-//     await fetch(new Request(googleAdUrl)).catch((_) => (adBlockEnabled = true));
-//   } catch (e) {
-//     adBlockEnabled = true;
-//   } finally {
-//     // if(adBlockEnabled) $('body').empty().append(htmlAdblock);
-//     if (adBlockEnabled) {
-//       $(`<b style="text-align: center; margin: auto; display: block; color:red">[Adblock Detected] Vui lòng tắt chặn quảng cáo và tải lại trang!</b>`).insertBefore(
-//         "#getLink"
-//       );
-//       $("#getLink").remove();
-//     }
-//   }
-// });
 
 // Shopee Flashsale
 $(async function () {
@@ -176,3 +170,25 @@ function showShopeeVoucherHTML(data = []) {
   $("#shopeeVoucherContent").empty().append(html);
   $("#shopeeShow").show();
 }
+
+// adblock
+$(async function () {
+  const htmlAdblock =
+    '<div id="ignielAdBlock"><div class="isiAds"><span class="judul">Adblock Detected</span><br><svg viewBox="0 0 24 24"><path d="M13,13H11V7H13M12,17.3A1.3,1.3 0 0,1 10.7,16A1.3,1.3 0 0,1 12,14.7A1.3,1.3 0 0,1 13.3,16A1.3,1.3 0 0,1 12,17.3M15.73,3H8.27L3,8.27V15.73L8.27,21H15.73L21,15.73V8.27L15.73,3Z"></path></svg><br>Please turn off your adblock to continue, after you turn it off then reload this page. <br><br><br>Vui lòng tắt chặn quảng cáo và tải lại trang!</div></div>';
+  let adBlockEnabled = false;
+  const googleAdUrl =
+    "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+  try {
+    await fetch(new Request(googleAdUrl)).catch((_) => (adBlockEnabled = true));
+  } catch (e) {
+    adBlockEnabled = true;
+  } finally {
+    // if(adBlockEnabled) $('body').empty().append(htmlAdblock);
+    if (adBlockEnabled) {
+      $(
+        `<b style="text-align: center; margin: auto; display: block; color:red">[Adblock Detected] Vui lòng tắt chặn quảng cáo và tải lại trang!</b>`
+      ).insertBefore("#getLink");
+      $("#getLink").remove();
+    }
+  }
+});
