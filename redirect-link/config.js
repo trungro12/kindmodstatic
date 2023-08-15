@@ -85,7 +85,7 @@ $(() => {
     getLinkBtn.attr("href", "https://shope.ee/8zc4oXqyep");
     getLinkBtn.attr("target", "_blank");
   }
-  getLinkBtn.attr("ref", "nofollow noopener noreferrer");
+  // getLinkBtn.attr("rel", "nofollow noopener noreferrer");
   getLinkBtn.show();
 
   // add fb like
