@@ -138,24 +138,39 @@ $(async function () {
       console.log(err);
     },
     success: function (data) {
-      let html = "";
-      for (const voucher of data) {
-        html += `
-          <div class="box-voucher">
-          <a href="${voucher.link}" target="_blank" rel="nofollow noreferrer noopener">
-            <div class="shopeeImage"><img src="${voucher.image}" alt="${voucher.title}"></div>
-            <div class="shopeeTitle">${voucher.title}</div>
-            <div class="shopeeContent">${voucher.content}</div>
-            <div class="shopeeTime">${voucher.startTime} - ${voucher.endTime}</div>
-          </a>
-        </div>
-          `;
-      }
-
-      $("#shopeeVoucherContent").empty().append(html);
-      $("#shopeeShow").show();
+      showShopeeVoucherHTML(data);
     },
 
     timeout: 4000, // sets timeout to 3 seconds
   });
 });
+
+function showShopeeVoucherHTML(data = []) {
+  // sort
+  data.sort((a, b) => {
+    try {
+      const first = parseInt(a.content.match(/\*\*Giảm ([0-9]+)%\*\*/m)[1]);
+      const second = parseInt(b.content.match(/\*\*Giảm ([0-9]+)%\*\*/m)[1]);
+      return second - first;
+    } catch (error) {
+      return 0;
+    }
+  });
+
+  let html = "";
+  for (const voucher of data) {
+    html += `
+      <div class="box-voucher">
+      <a href="${voucher.link}" target="_blank" rel="nofollow noreferrer noopener">
+        <div class="shopeeImage"><img src="${voucher.image}" alt="${voucher.title}"></div>
+        <div class="shopeeTitle">${voucher.title}</div>
+        <div class="shopeeContent">${voucher.content}</div>
+        <div class="shopeeTime">${voucher.startTime} - ${voucher.endTime}</div>
+      </a>
+    </div>
+      `;
+  }
+
+  $("#shopeeVoucherContent").empty().append(html);
+  $("#shopeeShow").show();
+}
