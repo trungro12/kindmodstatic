@@ -702,6 +702,10 @@ body {
   cursor: pointer;
 }
 
+button.taolink{
+  display: block;
+}
+
 ._3rh8J {
   color: #fff;
   font-family: "Roboto", sans-serif;
