@@ -74,6 +74,9 @@ $(() => {
   getLinkBtn.attr("ref", "nofollow noopener noreferrer");
   getLinkBtn.show();
 
+  // add fb like
+  $('#fb-like').attr('src', 'https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fkindmod.com&width=450&layout&action&size&share=false&height=35');
+
   getLinkBtn.click(() => {
     // openInNewTab("https://shope.ee/8zc4oXqyep");
     getLinkBtn.remove();
@@ -128,7 +131,6 @@ $(function () {
 // });
 
 // Shopee Flashsale
-
 $(async function () {
   const url =
     "aHR0cHMlM0ElMkYlMkZkYXRhYmFzZS1saXZlLWRlZmF1bHQtcnRkYi5hc2lhLXNvdXRoZWFzdDEuZmlyZWJhc2VkYXRhYmFzZS5hcHAlMkZzaG9wZWUlMkZmbGFzaHNhbGVzLmpzb24=";
