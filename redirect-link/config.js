@@ -239,7 +239,7 @@ async function setCountLinkRef() {
   const hostname = getHostUrl(document.referrer);
   if (!hostname) return false;
 
-  const host = hostname.replace(/\.(.*?)$/g, "").replace(".", "-");
+  const host = hostname.replace(/\./g, "-");
 
   const urlApi =
     firebaseDatabaseURL + `/kindmod-redirect/link-ref/${host}.json`;
