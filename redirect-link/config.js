@@ -107,9 +107,6 @@ $(() => {
     // getLinkBtn.attr("href", "https://shope.ee/8zc4oXqyep");
     // getLinkBtn.attr("target", "_blank");
   }
-
-  getLinkBtn.attr("href", "https://shope.ee/8zc4oXqyep");
-  getLinkBtn.attr("target", "_blank");
   // getLinkBtn.attr("rel", "nofollow noopener noreferrer");
   getLinkBtn.show();
 
@@ -120,7 +117,7 @@ $(() => {
   // );
 
   getLinkBtn.click(() => {
-    // openInNewTab("https://shope.ee/8zc4oXqyep");
+    openInNewTab("https://shope.ee/8zc4oXqyep");
     getLinkBtn.remove();
     $("#waitlink").show();
     init();
