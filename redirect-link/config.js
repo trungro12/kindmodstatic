@@ -251,22 +251,23 @@ async function setCountLinkRef() {
       ".sv": { increment: 1 },
     },
     timestamp: currentTime,
+    logs : ['No data']
   };
 
   // check data for new date
   const linkRefInfo = await fetch(urlApi);
   const linkRefData = linkRefInfo.json();
   if (linkRefData?.timestamp) {
+    payload.logs = linkRefData?.logs || ["no data"];
     const linkRefDate = new Date(linkRefData.timestamp);
     const date = new Date(currentTime);
     const currentDate =
       date.getDate() + (date.getMonth() != linkRefDate.getMonth() ? 30 : 0);
     if (linkRefDate.getDate() < currentDate) {
-      payload.logs = linkRefData?.logs || ["no data"];
       if (payload.logs.length > 100) payload.logs = [];
       const logs = `${
         linkRefData.count
-      } click - ${linkRefDate.toLocaleString()}`;
+      } - ${linkRefDate.toLocaleString()}`;
       payload.logs.push(logs);
       payload.count = 0;
     }
