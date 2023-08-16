@@ -115,10 +115,10 @@ $(() => {
 
   getLinkBtn.click(() => {
     // openInNewTab("https://shope.ee/8zc4oXqyep");
-    setCountLinkRef();
     getLinkBtn.remove();
     $("#waitlink").show();
     init();
+    setCountLinkRef();
   });
 });
 
