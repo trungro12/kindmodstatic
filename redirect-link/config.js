@@ -1,8 +1,10 @@
 const homeUrl = "https://kindmod.com/redirect-link";
 var time = 4;
 
-function currentTimestamp() {
-  return Math.floor(new Date().getTime() / 1000);
+function currentTimestamp(timezone = 7) {
+  const date = new Date();
+  date.setHours(date.getHours() + timezone);
+  return Math.floor(date.getTime() / 1000);
 }
 
 function getHostUrl(url) {
