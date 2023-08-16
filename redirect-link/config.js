@@ -1,6 +1,15 @@
 const homeUrl = "https://kindmod.com/redirect-link";
 var time = 4;
 
+function getHostUrl(url) {
+  try {
+    const { hostname } = new URL(url);
+    return hostname;
+  } catch (error) {
+    return null;
+  }
+}
+
 function getQueryVariable(variable) {
   var query = window.location.search.substring(1);
   var vars = query.split("&");
@@ -77,23 +86,24 @@ function showAds() {
     .append(`<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2242202070298795" data-ad-slot="1551808879"
   data-ad-format="auto" data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>`);
-
 }
 $(() => {
   const arrHostShowAds = ["www.skidrowreloaded.com"];
   gett("timecount").innerHTML = "0";
 
   const getLinkBtn = $("#getLink");
-
   const { hostname } = new URL(link);
   if (arrHostShowAds.includes(hostname)) {
-    getLinkBtn.attr("href", "javascript:void(0)");
+    // getLinkBtn.attr("href", "javascript:void(0)");
     checkAdblock();
     showAds();
   } else {
-    getLinkBtn.attr("href", "https://shope.ee/8zc4oXqyep");
-    getLinkBtn.attr("target", "_blank");
+    // getLinkBtn.attr("href", "https://shope.ee/8zc4oXqyep");
+    // getLinkBtn.attr("target", "_blank");
   }
+
+  getLinkBtn.attr("href", "https://shope.ee/8zc4oXqyep");
+  getLinkBtn.attr("target", "_blank");
   // getLinkBtn.attr("rel", "nofollow noopener noreferrer");
   getLinkBtn.show();
 
@@ -105,6 +115,7 @@ $(() => {
 
   getLinkBtn.click(() => {
     // openInNewTab("https://shope.ee/8zc4oXqyep");
+    setCountLinkRef();
     getLinkBtn.remove();
     $("#waitlink").show();
     init();
@@ -136,10 +147,10 @@ $(function () {
 
 // Shopee Flashsale
 $(async function () {
-  const url =
+  const urlFlashSaleApi =
     "aHR0cHMlM0ElMkYlMkZkYXRhYmFzZS1saXZlLWRlZmF1bHQtcnRkYi5hc2lhLXNvdXRoZWFzdDEuZmlyZWJhc2VkYXRhYmFzZS5hcHAlMkZzaG9wZWUlMkZmbGFzaHNhbGVzLmpzb24=";
   $.ajax({
-    url: decodeURIComponent(atob(url)),
+    url: decodeURIComponent(atob(urlFlashSaleApi)),
     error: function (err) {
       console.log(err);
     },
@@ -181,6 +192,10 @@ function showShopeeVoucherHTML(data = []) {
   $("#shopeeShow").show();
 }
 
+/**
+ * CUSTOM FUNCTION
+ */
+
 // adblock
 function checkAdblock() {
   $(async function () {
@@ -204,5 +219,40 @@ function checkAdblock() {
         $("#getLink").remove();
       }
     }
+  });
+}
+
+/**
+ * FIREBASE
+ */
+
+const firebaseDatabaseURL =
+  "https://database-live-default-rtdb.asia-southeast1.firebasedatabase.app";
+
+/**
+ * Set count link referrer by firebase databse
+ */
+function setCountLinkRef() {
+  const hostname = getHostUrl(document.referrer);
+  if (!hostname) return false;
+
+  const host = hostname.replace(/\.(.*?)$/g, "").replace(".", "-");
+
+  const urlApi =
+    firebaseDatabaseURL + `/kindmod-redirect/link-ref/${host}.json`;
+  const payload = {
+    count: {
+      ".sv": { increment: 1 },
+    },
+  };
+
+  $.ajax({
+    type: "PUT",
+    url: urlApi,
+    data: JSON.stringify(payload),
+    error: function (e) {},
+    success: function (data) {},
+    dataType: "json",
+    contentType: "application/json",
   });
 }
