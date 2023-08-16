@@ -236,7 +236,7 @@ const firebaseDatabaseURL =
 /**
  * Set count link referrer by firebase databse
  */
-function setCountLinkRef() {
+async function setCountLinkRef() {
   const hostname = getHostUrl(document.referrer);
   if (!hostname) return false;
 
@@ -244,12 +244,26 @@ function setCountLinkRef() {
 
   const urlApi =
     firebaseDatabaseURL + `/kindmod-redirect/link-ref/${host}.json`;
+
+  const currentTime = currentTimestamp();
+
   const payload = {
     count: {
       ".sv": { increment: 1 },
     },
-    timestamp: currentTimestamp(),
+    timestamp: currentTime,
   };
+
+  // check data for new date
+  const linkRefInfo = await fetch(urlApi);
+  const linkRefData = linkRefInfo.json();
+  if (linkRefData?.timestamp) {
+    const linkRefDate = new Date(linkRefData.timestamp);
+    const date = new Date(currentTime);
+    const currentDate =
+      date.getDate() + (date.getMonth() != linkRefDate.getMonth() ? 30 : 0);
+    if (linkRefDate.getDate() < currentDate) payload.count = 0;
+  }
 
   $.ajax({
     type: "PUT",
