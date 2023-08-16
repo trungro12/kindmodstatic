@@ -1,6 +1,10 @@
 const homeUrl = "https://kindmod.com/redirect-link";
 var time = 4;
 
+function currentTimestamp() {
+  return Math.floor(new Date().getTime() / 1000);
+}
+
 function getHostUrl(url) {
   try {
     const { hostname } = new URL(url);
@@ -244,6 +248,7 @@ function setCountLinkRef() {
     count: {
       ".sv": { increment: 1 },
     },
+    timestamp: currentTimestamp(),
   };
 
   $.ajax({
