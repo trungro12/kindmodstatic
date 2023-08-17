@@ -258,6 +258,7 @@ async function setCountLinkRef() {
   const linkRefInfo = await fetch(urlApi);
   const linkRefData = linkRefInfo.json();
   if (linkRefData?.timestamp) {
+    payload.timestamp = linkRefData.timestamp;
     payload.logs = linkRefData?.logs || ["no data"];
     const linkRefDate = new Date(linkRefData.timestamp);
     const date = new Date(currentTime);
