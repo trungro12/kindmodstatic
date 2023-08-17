@@ -217,7 +217,7 @@ function checkAdblock() {
       // if(adBlockEnabled) $('body').empty().append(htmlAdblock);
       if (adBlockEnabled) {
         $(
-          `<b style="text-align: center; margin: auto; display: block; color:red">[Adblock Detected] Vui lòng tắt chặn quảng cáo và tải lại trang!</b>`
+          `<b class="alert-text">[Adblock Detected] Vui lòng tắt chặn quảng cáo và tải lại trang!</b>`
         ).insertBefore("#getLink");
         $("#getLink").remove();
       }
@@ -286,15 +286,19 @@ async function setCountLinkRef() {
 // RECAPTCHA V2
 
 function showCaptcha(sitekey = "6LcoVlMUAAAAAMHhgoVVHfvy5-brxndleJzIzXCd") {
-  const html = `<div
+  const html = `<span id="captcha-loading" class="alert-text">Loading...</span><div
   class="g-recaptcha"
   data-sitekey="${sitekey}"
   data-callback="onRecaptchaSuccess"
   data-expired-callback="onRecaptchaResponseExpiry"
   data-error-callback="onRecaptchaError"
-></div><script src="https://www.google.com/recaptcha/api.js" async defer></script>`;
+></div><script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad" async defer></script>`;
   $("#captcha").append(html);
   $("#timeout").hide();
+}
+
+function onRecaptchaLoad(){
+  $('#captcha-loading').hide();
 }
 
 function onRecaptchaSuccess() {
