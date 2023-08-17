@@ -1,5 +1,5 @@
 const homeUrl = "https://kindmod.com/redirect-link";
-var time = 4;
+var time = 0;
 
 function currentTimestamp(timezone = 7) {
   const date = new Date();
@@ -98,16 +98,13 @@ $(() => {
   gett("timecount").innerHTML = "0";
 
   const getLinkBtn = $("#getLink");
-  const { hostname } = new URL(link);
-  if (arrHostShowAds.includes(hostname)) {
-    // getLinkBtn.attr("href", "javascript:void(0)");
-    checkAdblock();
-    showAds();
-  } else {
-    // getLinkBtn.attr("href", "https://shope.ee/8zc4oXqyep");
-    // getLinkBtn.attr("target", "_blank");
-  }
-  // getLinkBtn.attr("rel", "nofollow noopener noreferrer");
+//   const hostname = getHostUrl(link);
+//   if (arrHostShowAds.includes(hostname)) {
+//     checkAdblock();
+//     showAds();
+//   } else {
+//   }
+  showAds();
   getLinkBtn.show();
 
   // add fb like
@@ -119,15 +116,18 @@ $(() => {
   getLinkBtn.click(() => {
     openInNewTab("https://shope.ee/8zc4oXqyep");
     getLinkBtn.remove();
-    $("#waitlink").show();
-    init();
+    showCaptcha();
+    // $("#waitlink").show();
+    // init();
     setCountLinkRef();
   });
 });
 
 // document.onload = init();
 
-function showLink() {
+function showLink(isShow = true) {
+  if (!isShow) return $("a.link-out-btn").css("display", "none");
+
   document.getElementById("nametime").innerHTML = "0<br/>";
   document.getElementById("waitlink").style.display = "none";
   $("a.link-out-btn").css("display", "inline-block");
@@ -251,7 +251,7 @@ async function setCountLinkRef() {
       ".sv": { increment: 1 },
     },
     timestamp: currentTime,
-    logs : ['No data']
+    logs: ["No data"],
   };
 
   // check data for new date
@@ -266,9 +266,7 @@ async function setCountLinkRef() {
       date.getDate() + (date.getMonth() != linkRefDate.getMonth() ? 30 : 0);
     if (linkRefDate.getDate() < currentDate) {
       if (payload.logs.length > 100) payload.logs = [];
-      const logs = `${
-        linkRefData.count
-      } - ${linkRefDate.toLocaleString()}`;
+      const logs = `${linkRefData.count} - ${linkRefDate.toLocaleString()}`;
       payload.logs.push(logs);
       payload.count = 0;
     }
@@ -283,4 +281,30 @@ async function setCountLinkRef() {
     dataType: "json",
     contentType: "application/json",
   });
+}
+
+// RECAPTCHA V2
+
+function showCaptcha(sitekey = "6LcoVlMUAAAAAMHhgoVVHfvy5-brxndleJzIzXCd") {
+  const html = `<div
+  class="g-recaptcha"
+  data-sitekey="${sitekey}"
+  data-callback="onRecaptchaSuccess"
+  data-expired-callback="onRecaptchaResponseExpiry"
+  data-error-callback="onRecaptchaError"
+></div><script src="https://www.google.com/recaptcha/api.js" async defer></script>`;
+  $("#captcha").append(html);
+  $("#timeout").hide();
+}
+
+function onRecaptchaSuccess() {
+  showLink();
+}
+
+function onRecaptchaResponseExpiry() {
+  showLink(false);
+}
+
+function onRecaptchaError() {
+  showLink(false);
 }

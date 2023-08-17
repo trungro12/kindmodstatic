@@ -702,7 +702,7 @@ body {
   cursor: pointer;
 }
 
-button.taolink{
+button.taolink {
   display: block;
 }
 
@@ -940,7 +940,7 @@ button.taolink{
   background-color: #ff947e14;
 }
 
-.box-voucher:hover{
+.box-voucher:hover {
   border: 1px solid red;
 }
 
@@ -958,13 +958,14 @@ button.taolink{
   margin: 10px auto;
 }
 
-.shopeeTitle{
+.shopeeTitle {
   font-size: 15px;
   color: black;
   font-weight: bold;
 }
 
-.shopeeContent, #shopeeHeading {
+.shopeeContent,
+#shopeeHeading {
   padding: 10px;
   color: #ee4d2d;
   font-weight: bold;
@@ -972,19 +973,24 @@ button.taolink{
   text-align: center;
 }
 
-#shopeeHeading{
+#shopeeHeading {
   font-size: 45px;
   text-transform: uppercase;
   line-height: 1;
 }
-@media screen and (max-width: 750px){
-  .box-voucher{
+@media screen and (max-width: 750px) {
+  .box-voucher {
     width: 100%;
   }
 }
 
-@media screen and (min-width: 751px) and (max-width: 1100px){
-  .box-voucher{
+@media screen and (min-width: 751px) and (max-width: 1100px) {
+  .box-voucher {
     width: 50%;
   }
+}
+
+#captcha {
+  display: flex;
+  justify-content: center;
 }
