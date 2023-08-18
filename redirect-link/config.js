@@ -198,6 +198,7 @@ $(async function () {
     },
     success: function (data) {
       showShopeeVoucherHTML(data);
+      $('.lazy').Lazy();
     },
 
     timeout: 4000, // sets timeout to 3 seconds
@@ -221,7 +222,7 @@ function showShopeeVoucherHTML(data = []) {
     html += `
       <div class="box-voucher">
       <a href="${voucher.link}" target="_blank" rel="nofollow noreferrer noopener">
-        <div class="shopeeImage"><img src="${voucher.image}" alt="${voucher.title}"></div>
+        <div class="shopeeImage"><img class="lazy" data-src="${voucher.image}" alt="${voucher.title}"></div>
         <div class="shopeeTitle">${voucher.title}</div>
         <div class="shopeeContent">${voucher.content}</div>
         <div class="shopeeTime">${voucher.startTime} - ${voucher.endTime}</div>
