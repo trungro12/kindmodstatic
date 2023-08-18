@@ -200,7 +200,7 @@ $(() => {
     $("#getLink").click(() => {
       openInNewTab("https://shope.ee/8zc4oXqyep");
       setStep(2);
-      top.location.href = homeUrl;
+      top.location.replace(homeUrl);
     });
   }
 
