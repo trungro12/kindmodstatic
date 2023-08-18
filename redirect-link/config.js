@@ -138,7 +138,6 @@ function showAds() {
 }
 $(() => {
   const refLink = getRefLink();
-  console.log(refLink);
   if (refLink) {
     // step 2
     $('#step').text('Step 2');
@@ -151,7 +150,7 @@ $(() => {
     // step 1
     $('#step').text('Step 1');
     showAds();
-    showCaptcha(null);
+    showCaptcha();
     $("#getLink").click(() => {
       openInNewTab("https://shope.ee/8zc4oXqyep");
       setRefLink(document.referrer);
