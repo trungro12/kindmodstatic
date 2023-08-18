@@ -1,5 +1,31 @@
 const homeUrl = "https://kindmod.com/redirect-link";
-var time = 0;
+// const homeUrl = "http://localhost:5500/index.html";
+const timetoWait = 7;
+var time = timetoWait;
+
+// cookie
+function setCookie(name, value = "", days = null) {
+  var expires = "";
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+function getCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(";");
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == " ") c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
+function deleteCookie(name) {
+  document.cookie = name + "=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+}
 
 function currentTimestamp(timezone = 7) {
   const date = new Date();
@@ -42,6 +68,19 @@ function copy(text) {
   alert("Đã Copy!");
 }
 
+function getRefLink() {
+  const refLink = getCookie("ref_link");
+  return refLink ? decodeURIComponent(atob(refLink)) : null;
+}
+
+function setRefLink(url) {
+  setCookie("ref_link", btoa(encodeURIComponent(url)));
+}
+
+function deleteRefLink() {
+  deleteCookie("ref_link");
+}
+
 var isTab = true;
 // $(window).focus(function () {
 //   isTab = true;
@@ -53,7 +92,6 @@ var isTab = true;
 
 var page = getQueryVariable("url") || btoa(encodeURIComponent(homeUrl));
 const link = decodeURIComponent(atob(page));
-
 // const link = `https://link1s.com/full?api=37fbb8008200612b7c5c0dfcde5113722e046632&url=${page}&type=1`;
 
 function gett(id) {
@@ -80,11 +118,16 @@ function init() {
   } else setTimeout(init, 50);
 }
 
-function showAds() {
-  // $("body").append(
-  //   `<script src="./popads.js" type="text/javascript" data-cfasync="false"></script>`
-  // );
+function showLink(isShow = true) {
+  if (!isShow) return $("a.link-out-btn").css("display", "none");
 
+  document.getElementById("nametime").innerHTML = "0<br/>";
+  document.getElementById("waitlink").style.display = "none";
+  $("a.link-out-btn").css("display", "inline-block");
+  $("a.link-out-btn").each((i, e) => (e.href = link));
+}
+
+function showAds() {
   $("head")
     .append(`<script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2242202070298795"
   crossorigin="anonymous"></script>`);
@@ -94,45 +137,28 @@ function showAds() {
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>`);
 }
 $(() => {
-  const arrHostShowAds = ["www.skidrowreloaded.com"];
-  gett("timecount").innerHTML = "0";
-
-  const getLinkBtn = $("#getLink");
-  //   const hostname = getHostUrl(link);
-  //   if (arrHostShowAds.includes(hostname)) {
-  //     checkAdblock();
-  //     showAds();
-  //   } else {
-  //   }
-  showAds();
-  getLinkBtn.show();
-
-  // add fb like
-  // $("#fb-like").attr(
-  //   "src",
-  //   "https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fkindmod.com&width=450&layout&action&size&share=false&height=35"
-  // );
-
-  getLinkBtn.click(() => {
-    openInNewTab("https://shope.ee/8zc4oXqyep");
-    getLinkBtn.remove();
-    showCaptcha();
-    // $("#waitlink").show();
-    // init();
-    setCountLinkRef();
-  });
+  const refLink = getRefLink();
+  console.log(refLink);
+  if (refLink) {
+    // step 2
+    $('#step').text('Step 2');
+    gett("timecount").innerHTML = timetoWait;
+    $("#waitlink").show();
+    init();
+    setCountLinkRef(refLink);
+    deleteRefLink();
+  } else {
+    // step 1
+    $('#step').text('Step 1');
+    showAds();
+    showCaptcha(null);
+    $("#getLink").click(() => {
+      openInNewTab("https://shope.ee/8zc4oXqyep");
+      setRefLink(document.referrer);
+      top.location.href = homeUrl;
+    });
+  }
 });
-
-// document.onload = init();
-
-function showLink(isShow = true) {
-  if (!isShow) return $("a.link-out-btn").css("display", "none");
-
-  document.getElementById("nametime").innerHTML = "0<br/>";
-  document.getElementById("waitlink").style.display = "none";
-  $("a.link-out-btn").css("display", "inline-block");
-  $("a.link-out-btn").each((i, e) => (e.href = link));
-}
 
 $(function () {
   $("form[name=taolinkrutgon]").on("submit", function (n) {
@@ -235,8 +261,8 @@ const firebaseDatabaseURL =
 /**
  * Set count link referrer by firebase databse
  */
-async function setCountLinkRef() {
-  const hostname = getHostUrl(document.referrer);
+async function setCountLinkRef(refLink) {
+  const hostname = getHostUrl(refLink);
   if (!hostname) return false;
 
   const host = hostname.replace(/\./g, "-");
@@ -263,6 +289,7 @@ async function setCountLinkRef() {
 // RECAPTCHA V2
 
 function showCaptcha(sitekey = "6LcoVlMUAAAAAMHhgoVVHfvy5-brxndleJzIzXCd") {
+  if (!sitekey) sitekey = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
   const html = `<span id="captcha-loading" class="alert-text">Loading...</span><div
   class="g-recaptcha"
   data-sitekey="${sitekey}"
@@ -279,13 +306,13 @@ function onRecaptchaLoad() {
 }
 
 function onRecaptchaSuccess() {
-  showLink();
+  $("#getLink").show();
 }
 
 function onRecaptchaResponseExpiry() {
-  showLink(false);
+  $("#getLink").hide();
 }
 
 function onRecaptchaError() {
-  showLink(false);
+  $("#getLink").hide();
 }
