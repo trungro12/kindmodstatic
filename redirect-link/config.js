@@ -181,7 +181,11 @@ $(() => {
 
   showFlashSale();
 
-  if (step == "1") return step1();
+  if (step == "1") {
+    const queryUrl = getQueryVariable("url");
+    if (queryUrl) return top.location.replace(homeUrl);
+    return step1();
+  }
   if (step == "2") return step2();
   else if (step != "2") {
     deleteStep();
