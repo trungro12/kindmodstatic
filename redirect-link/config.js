@@ -175,12 +175,19 @@ $(() => {
 
   if (!step) {
     setStep(1);
-    top.location.href = homeUrl;
+    top.location.replace(homeUrl);
     return;
   }
 
+  showFlashSale();
+
   if (step == "1") return step1();
   if (step == "2") return step2();
+  else if (step != "2") {
+    deleteStep();
+    top.location.reload();
+    return;
+  }
 
   function step1() {
     showAds();
@@ -220,7 +227,7 @@ $(function () {
 });
 
 // Shopee Flashsale
-$(async function () {
+async function showFlashSale() {
   const urlFlashSaleApi =
     "aHR0cHMlM0ElMkYlMkZkYXRhYmFzZS1saXZlLWRlZmF1bHQtcnRkYi5hc2lhLXNvdXRoZWFzdDEuZmlyZWJhc2VkYXRhYmFzZS5hcHAlMkZzaG9wZWUlMkZmbGFzaHNhbGVzLmpzb24=";
   $.ajax({
@@ -235,7 +242,7 @@ $(async function () {
 
     timeout: 4000, // sets timeout to 3 seconds
   });
-});
+}
 
 function showShopeeVoucherHTML(data = []) {
   // sort
