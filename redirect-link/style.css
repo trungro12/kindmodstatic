@@ -6,7 +6,7 @@
   }
 }
 
-.fixed{
+.fixed {
   position: fixed;
   left: 0;
   right: 0;
@@ -14,7 +14,7 @@
   width: auto;
   height: auto;
 }
-.fixed.fixed-bottom{
+.fixed.fixed-bottom {
   bottom: 0;
 }
 
@@ -1013,4 +1013,11 @@ button.taolink {
 #captcha {
   display: flex;
   justify-content: center;
+}
+
+/* adsense */
+.adsense {
+  text-align: center;
+  display: block;
+  margin: auto;
 }
