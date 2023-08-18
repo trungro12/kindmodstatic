@@ -81,6 +81,19 @@ function deleteRefLink() {
   deleteCookie("ref_link");
 }
 
+
+
+
+
+function getDirectLink() {
+  const directLink = getCookie("direct_link");
+  return directLink ? decodeURIComponent(atob(directLink)) : "";
+}
+
+function setDirectLink(url) {
+  setCookie("direct_link", btoa(encodeURIComponent(url)));
+}
+
 var isTab = true;
 // $(window).focus(function () {
 //   isTab = true;
@@ -124,7 +137,7 @@ function showLink(isShow = true) {
   document.getElementById("nametime").innerHTML = "0<br/>";
   document.getElementById("waitlink").style.display = "none";
   $("a.link-out-btn").css("display", "inline-block");
-  $("a.link-out-btn").each((i, e) => (e.href = link));
+  $("a.link-out-btn").each((i, e) => (e.href = getDirectLink()));
 }
 
 function showAds() {
@@ -140,7 +153,7 @@ $(() => {
   const refLink = getRefLink();
   if (refLink) {
     // step 2
-    $('#step').text('Step 2');
+    $("#step").text("Step 2");
     gett("timecount").innerHTML = timetoWait;
     $("#waitlink").show();
     init();
@@ -148,12 +161,13 @@ $(() => {
     deleteRefLink();
   } else {
     // step 1
-    $('#step').text('Step 1');
+    $("#step").text("Step 1");
     showAds();
     showCaptcha();
     $("#getLink").click(() => {
       openInNewTab("https://shope.ee/8zc4oXqyep");
       setRefLink(document.referrer);
+      setDirectLink(link);
       top.location.href = homeUrl;
     });
   }
