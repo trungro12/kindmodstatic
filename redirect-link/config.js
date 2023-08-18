@@ -95,7 +95,7 @@ function deleteDirectLink() {
 }
 
 function getStep() {
-  getCookie("_step");
+  return getCookie("_step");
 }
 
 function setStep(step) {
