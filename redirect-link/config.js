@@ -147,7 +147,7 @@ function showAds() {
   $("head")
     .append(`<script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2242202070298795"
   crossorigin="anonymous"></script>`);
-  $(".adsense")
+  $(".adsense").empty()
     .append(`<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2242202070298795" data-ad-slot="1551808879"
   data-ad-format="auto" data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>`);
@@ -156,6 +156,7 @@ $(() => {
   const refLink = getRefLink();
   if (refLink) {
     // step 2
+    showAds();
     $("#step").text("Step 2");
     gett("timecount").innerHTML = timetoWait;
     $("#waitlink").show();
@@ -166,8 +167,8 @@ $(() => {
     // step 1
     const directLink = getDirectLink();
     if (directLink) {
-      $("#step").text("Step 1");
       showAds();
+      $("#step").text("Step 1");
       showCaptcha();
       $("#getLink").click(() => {
         openInNewTab("https://shope.ee/8zc4oXqyep");
