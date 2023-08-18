@@ -98,12 +98,12 @@ $(() => {
   gett("timecount").innerHTML = "0";
 
   const getLinkBtn = $("#getLink");
-//   const hostname = getHostUrl(link);
-//   if (arrHostShowAds.includes(hostname)) {
-//     checkAdblock();
-//     showAds();
-//   } else {
-//   }
+  //   const hostname = getHostUrl(link);
+  //   if (arrHostShowAds.includes(hostname)) {
+  //     checkAdblock();
+  //     showAds();
+  //   } else {
+  //   }
   showAds();
   getLinkBtn.show();
 
@@ -243,34 +243,11 @@ async function setCountLinkRef() {
 
   const urlApi =
     firebaseDatabaseURL + `/kindmod-redirect/link-ref/${host}.json`;
-
-  const currentTime = currentTimestamp();
-
   const payload = {
     count: {
       ".sv": { increment: 1 },
     },
-    timestamp: currentTime,
-    logs: ["No data"],
   };
-
-  // check data for new date
-  const linkRefInfo = await fetch(urlApi);
-  const linkRefData = linkRefInfo.json();
-  if (linkRefData?.timestamp) {
-    payload.timestamp = linkRefData.timestamp;
-    payload.logs = linkRefData?.logs || ["no data"];
-    const linkRefDate = new Date(linkRefData.timestamp);
-    const date = new Date(currentTime);
-    const currentDate =
-      date.getDate() + (date.getMonth() != linkRefDate.getMonth() ? 30 : 0);
-    if (linkRefDate.getDate() < currentDate) {
-      if (payload.logs.length > 100) payload.logs = [];
-      const logs = `${linkRefData.count} - ${linkRefDate.toLocaleString()}`;
-      payload.logs.push(logs);
-      payload.count = 0;
-    }
-  }
 
   $.ajax({
     type: "PUT",
@@ -297,8 +274,8 @@ function showCaptcha(sitekey = "6LcoVlMUAAAAAMHhgoVVHfvy5-brxndleJzIzXCd") {
   $("#timeout").hide();
 }
 
-function onRecaptchaLoad(){
-  $('#captcha-loading').hide();
+function onRecaptchaLoad() {
+  $("#captcha-loading").hide();
 }
 
 function onRecaptchaSuccess() {
