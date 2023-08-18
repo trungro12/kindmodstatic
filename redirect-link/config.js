@@ -94,6 +94,18 @@ function deleteDirectLink() {
   deleteCookie("direct_link");
 }
 
+function getStep() {
+  getCookie("_step");
+}
+
+function setStep(step) {
+  setCookie("_step", step);
+}
+
+function deleteStep() {
+  deleteCookie("_step");
+}
+
 var isTab = true;
 // $(window).focus(function () {
 //   isTab = true;
@@ -153,9 +165,35 @@ function showAds() {
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>`);
 }
 $(() => {
+  const directLink = getDirectLink();
+  if (!directLink) setDirectLink(link);
+
   const refLink = getRefLink();
-  if (refLink) {
-    // step 2
+  if (!refLink) setRefLink(refLink);
+
+  const step = getStep();
+
+  if (!step) {
+    setStep(1);
+    top.location.href = homeUrl;
+    return;
+  }
+
+  if (step == "1") return step1();
+  if (step == "2") return step2();
+
+  function step1() {
+    showAds();
+    $("#step").text("Step 1");
+    showCaptcha();
+    $("#getLink").click(() => {
+      openInNewTab("https://shope.ee/8zc4oXqyep");
+      setStep(2);
+      top.location.href = homeUrl;
+    });
+  }
+
+  function step2() {
     showAds();
     $("#step").text("Step 2");
     gett("timecount").innerHTML = timetoWait;
@@ -163,22 +201,7 @@ $(() => {
     init();
     setCountLinkRef(refLink);
     deleteRefLink();
-  } else {
-    // step 1
-    const directLink = getDirectLink();
-    if (directLink) {
-      showAds();
-      $("#step").text("Step 1");
-      showCaptcha();
-      $("#getLink").click(() => {
-        openInNewTab("https://shope.ee/8zc4oXqyep");
-        setRefLink(document.referrer);
-        top.location.href = homeUrl;
-      });
-    } else {
-      setDirectLink(link);
-      top.location.href = homeUrl;
-    }
+    deleteStep();
   }
 });
 
