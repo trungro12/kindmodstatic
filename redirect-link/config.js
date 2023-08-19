@@ -114,9 +114,8 @@ var isTab = true;
 // $(window).blur(function () {
 //   isTab = false;
 // });
-
-var page = getQueryVariable("url") || btoa(encodeURIComponent(homeUrl));
-const link = decodeURIComponent(atob(page));
+const queryUrl = getQueryVariable("url");
+const link = queryUrl ? decodeURIComponent(atob(queryUrl)) : homeUrl;
 // const link = `https://link1s.com/full?api=37fbb8008200612b7c5c0dfcde5113722e046632&url=${page}&type=1`;
 
 function gett(id) {
@@ -165,7 +164,6 @@ function showAds() {
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>`);
 }
 $(() => {
-  const queryUrl = getQueryVariable("url");
   if (queryUrl) {
     setDirectLink(link);
     if (document.referrer && !document.referrer.includes(homeUrl))
