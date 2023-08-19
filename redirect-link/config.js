@@ -169,7 +169,8 @@ $(() => {
   if (!directLink) setDirectLink(link);
 
   const refLink = getRefLink();
-  if (!refLink) setRefLink(document.referrer);
+  if (!refLink && document.referrer && !document.referrer.includes(homeUrl))
+    setRefLink(document.referrer);
 
   const step = getStep();
 
@@ -210,9 +211,11 @@ $(() => {
     gett("timecount").innerHTML = timetoWait;
     $("#waitlink").show();
     init();
-    setCountLinkRef(refLink);
-    deleteRefLink();
-    deleteStep();
+    if (refLink) {
+      setCountLinkRef(refLink);
+      deleteRefLink();
+    }
+    if (step) deleteStep();
   }
 });
 
