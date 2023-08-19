@@ -169,7 +169,7 @@ $(() => {
   if (!directLink) setDirectLink(link);
 
   const refLink = getRefLink();
-  if (!refLink) setRefLink(refLink);
+  if (!refLink) setRefLink(document.referrer);
 
   const step = getStep();
 
