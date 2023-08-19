@@ -165,13 +165,6 @@ function showAds() {
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>`);
 }
 $(() => {
-  const directLink = getDirectLink();
-  if (!directLink) setDirectLink(link);
-
-  const refLink = getRefLink();
-  if (!refLink && document.referrer && !document.referrer.includes(homeUrl))
-    setRefLink(document.referrer);
-
   const step = getStep();
 
   if (!step) {
@@ -184,7 +177,13 @@ $(() => {
 
   if (step == "1") {
     const queryUrl = getQueryVariable("url");
-    if (queryUrl) return top.location.replace(homeUrl);
+    if (queryUrl) {
+      setDirectLink(link);
+      if (document.referrer && !document.referrer.includes(homeUrl))
+        setRefLink(document.referrer);
+
+      return top.location.replace(homeUrl);
+    }
     return step1();
   }
   if (step == "2") return step2();
@@ -206,6 +205,7 @@ $(() => {
   }
 
   function step2() {
+    const refLink = getRefLink();
     showAds();
     $("#step").text("Step 2");
     gett("timecount").innerHTML = timetoWait;
