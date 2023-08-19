@@ -1,6 +1,6 @@
 const homeUrl = "https://kindmod.com/redirect-link";
 // const homeUrl = "http://localhost:5500/index.html";
-const timetoWait = 7;
+const timetoWait = 5;
 var time = timetoWait;
 
 // cookie
@@ -138,7 +138,7 @@ function countDown() {
 
 function init() {
   if (gett("timecount")) {
-    setInterval(countDown, 1000);
+    setInterval(countDown, 2000);
     gett("timecount").innerHTML = time;
   } else setTimeout(init, 50);
 }
