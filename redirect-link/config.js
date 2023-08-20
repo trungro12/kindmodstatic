@@ -168,6 +168,7 @@ $(() => {
     setDirectLink(link);
     if (document.referrer && !document.referrer.includes(homeUrl))
       setRefLink(document.referrer);
+    deleteStep();
   }
 
   const step = getStep();
