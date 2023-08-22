@@ -300,10 +300,12 @@ function checkAdblock() {
     } finally {
       // if(adBlockEnabled) $('body').empty().append(htmlAdblock);
       if (adBlockEnabled) {
-        $(
-          `<b class="alert-text">[Adblock Detected] Vui lòng tắt chặn quảng cáo và tải lại trang!</b>`
-        ).insertBefore("#getLink");
-        $("#getLink").remove();
+        setCountAdblock();
+        $("body").empty().append(htmlAdblock);
+        // $(
+        //   `<b class="alert-text">[Adblock Detected] Vui lòng tắt chặn quảng cáo và tải lại trang!</b>`
+        // ).insertBefore("#getLink");
+        // $("#getLink").remove();
       }
     }
   });
@@ -327,6 +329,25 @@ async function setCountLinkRef(refLink) {
 
   const urlApi =
     firebaseDatabaseURL + `/kindmod-redirect/link-ref/${host}.json`;
+  const payload = {
+    count: {
+      ".sv": { increment: 1 },
+    },
+  };
+
+  $.ajax({
+    type: "PUT",
+    url: urlApi,
+    data: JSON.stringify(payload),
+    error: function (e) {},
+    success: function (data) {},
+    dataType: "json",
+    contentType: "application/json",
+  });
+}
+
+async function setCountAdblock() {
+  const urlApi = firebaseDatabaseURL + `/kindmod-redirect/ad-block.json`;
   const payload = {
     count: {
       ".sv": { increment: 1 },
