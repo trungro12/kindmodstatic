@@ -1019,5 +1019,6 @@ button.taolink {
 .adsense {
   text-align: center;
   display: block;
-  margin: auto;
+  margin: 10px auto;
+  width: auto;
 }
