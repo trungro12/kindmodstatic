@@ -179,6 +179,7 @@ $(() => {
     return;
   }
 
+  checkAdblock();
   showFlashSale();
 
   if (step == "1") {
