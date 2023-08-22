@@ -163,6 +163,16 @@ function showAds() {
     .append(`<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2242202070298795" data-ad-slot="1551808879"
   data-ad-format="auto" data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>`);
+
+// In-Page Push (Banner)
+$('head').append(`<script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('agamagcargoan.com',6243307,document.createElement('script'))</script>`);
+
+// Interstitial
+$('head').append(`<script async="async" data-cfasync="false" src="//ophoacit.com/1?z=6243314"></script>`);
+
+// Vignette banner
+$('head').append(`<script>(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('glizauvo.net',6243315,document.createElement('script'))</script>`);
+
 }
 $(async () => {
   if (queryUrl) {
