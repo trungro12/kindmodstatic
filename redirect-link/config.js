@@ -2,6 +2,7 @@ const homeUrl = "https://kindmod.com/redirect-link";
 // const homeUrl = "http://localhost:5500/index.html";
 const timetoWait = 5;
 var time = timetoWait;
+var adBlockEnabled = false;
 
 // cookie
 function setCookie(name, value = "", days = null) {
@@ -163,7 +164,7 @@ function showAds() {
   data-ad-format="auto" data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>`);
 }
-$(() => {
+$(async () => {
   if (queryUrl) {
     setDirectLink(link);
     if (document.referrer && !document.referrer.includes(homeUrl))
@@ -179,7 +180,8 @@ $(() => {
     return;
   }
 
-  checkAdblock();
+  await checkAdblock();
+  if (adBlockEnabled) return;
   showFlashSale();
 
   if (step == "1") {
@@ -285,31 +287,26 @@ function showShopeeVoucherHTML(data = []) {
  */
 
 // adblock
-function checkAdblock() {
-  $(async function () {
-    const htmlAdblock =
-      '<div id="ignielAdBlock"><div class="isiAds"><span class="judul">Adblock Detected</span><br><svg viewBox="0 0 24 24"><path d="M13,13H11V7H13M12,17.3A1.3,1.3 0 0,1 10.7,16A1.3,1.3 0 0,1 12,14.7A1.3,1.3 0 0,1 13.3,16A1.3,1.3 0 0,1 12,17.3M15.73,3H8.27L3,8.27V15.73L8.27,21H15.73L21,15.73V8.27L15.73,3Z"></path></svg><br>Please turn off your adblock to continue, after you turn it off then reload this page. <br><br><br>Vui lòng tắt chặn quảng cáo và tải lại trang!</div></div>';
-    let adBlockEnabled = false;
-    const googleAdUrl =
-      "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
-    try {
-      await fetch(new Request(googleAdUrl)).catch(
-        (_) => (adBlockEnabled = true)
-      );
-    } catch (e) {
-      adBlockEnabled = true;
-    } finally {
-      // if(adBlockEnabled) $('body').empty().append(htmlAdblock);
-      if (adBlockEnabled) {
-        setCountAdblock();
-        $("body").empty().append(htmlAdblock);
-        // $(
-        //   `<b class="alert-text">[Adblock Detected] Vui lòng tắt chặn quảng cáo và tải lại trang!</b>`
-        // ).insertBefore("#getLink");
-        // $("#getLink").remove();
-      }
+async function checkAdblock() {
+  const htmlAdblock =
+    '<div id="ignielAdBlock"><div class="isiAds"><span class="judul">Adblock Detected</span><br><svg viewBox="0 0 24 24"><path d="M13,13H11V7H13M12,17.3A1.3,1.3 0 0,1 10.7,16A1.3,1.3 0 0,1 12,14.7A1.3,1.3 0 0,1 13.3,16A1.3,1.3 0 0,1 12,17.3M15.73,3H8.27L3,8.27V15.73L8.27,21H15.73L21,15.73V8.27L15.73,3Z"></path></svg><br>Please turn off your adblock to continue, after you turn it off then reload this page. <br><br><br>Vui lòng tắt chặn quảng cáo và tải lại trang!</div></div>';
+  const googleAdUrl =
+    "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+  try {
+    await fetch(new Request(googleAdUrl)).catch((_) => (adBlockEnabled = true));
+  } catch (e) {
+    adBlockEnabled = true;
+  } finally {
+    // if(adBlockEnabled) $('body').empty().append(htmlAdblock);
+    if (adBlockEnabled) {
+      setCountAdblock();
+      $("body").empty().append(htmlAdblock);
+      // $(
+      //   `<b class="alert-text">[Adblock Detected] Vui lòng tắt chặn quảng cáo và tải lại trang!</b>`
+      // ).insertBefore("#getLink");
+      // $("#getLink").remove();
     }
-  });
+  }
 }
 
 /**
