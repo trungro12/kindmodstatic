@@ -159,9 +159,9 @@ function showAds() {
   $("head")
     .append(`<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2242202070298795"
     crossorigin="anonymous"></script>`);
-  setTimeout(() => {
-    $(".adsense").empty().append(`
-<!-- Ads-Pic -->
+  $(".adsense").empty().append(`
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2242202070298795"
+    crossorigin="anonymous"></script>
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-2242202070298795"
@@ -172,7 +172,6 @@ function showAds() {
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
     `);
-  }, 1000);
 }
 $(async () => {
   if (queryUrl) {
