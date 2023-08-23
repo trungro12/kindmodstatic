@@ -187,7 +187,7 @@ $(async () => {
 
   await checkAdblock();
   if (adBlockEnabled) return;
-  showFlashSale();
+  // showFlashSale();
 
   if (step == "1") {
     return step1();
