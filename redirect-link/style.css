@@ -478,6 +478,10 @@ body {
   text-align: center;
 }
 
+#timeline{
+  margin: 30px auto;
+}
+
 #timeline h3 {
   margin: 0;
   font-family: "Roboto", sans-serif;
@@ -704,7 +708,8 @@ body {
 }
 
 .disabled {
-  opacity: 0.7;
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .taolink {
@@ -724,6 +729,7 @@ body {
 
 button.taolink {
   display: block;
+  margin: 20px auto;
 }
 
 ._3rh8J {
