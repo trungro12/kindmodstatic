@@ -166,13 +166,8 @@ function showAds() {
      data-ad-slot="1551808879"
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     `);
-
-  setTimeout(() => {
-    $(".adsense").append(`<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>`);
-  }, 1000);
 }
 $(async () => {
   if (queryUrl) {
