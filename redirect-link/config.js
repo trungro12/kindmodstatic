@@ -221,6 +221,7 @@ $(async () => {
   }
 
   function step2() {
+    $("#getLink").hide();
     const refLink = getRefLink();
     showAds();
     $("#step").text("Step 2");
